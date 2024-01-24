@@ -1,0 +1,14 @@
+{% for i in mov_list %}
+<h3>title:{{i.title | upper}}</h3>
+<h3>summary:{{i.summary | default:'no data available'}}</h3>
+<h3>year:{{i.year}}</h3>
+
+{% if i.sucess  %}
+   <h3>the movie was success</h3>
+  
+   
+{% else %}
+   <h3>the movie was failure</h3>
+{% endif %}
+
+{% endfor %}
