@@ -1,0 +1,20 @@
+{% load static %}
+
+<h1>temp page</h1>
+{% include 'button.html' %}
+
+<img src="{% static 'images/movie_logo.jpg' %}" alt="">
+
+<p>content without block in parent file</p>
+
+{% block new %}
+{% endblock new %}
+
+{% block content %}
+
+<p>this is temp page content</p>
+{% endblock content %}
+
+{% block tempcontent %}
+{% endblock tempcontent %}
+

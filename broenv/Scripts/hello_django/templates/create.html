@@ -1,0 +1,17 @@
+
+
+
+
+
+{% include 'button.html' %}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+   
+    {{ frm.as_p }}
+  <!-- Title: <input type="text" name="title">
+    Year: <input type="text" name="year">
+    Description: <input type="text" name="description">  -->
+    <button type="submit">submit</button>              
+
+</form>

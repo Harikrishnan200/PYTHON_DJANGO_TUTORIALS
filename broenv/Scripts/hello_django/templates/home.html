@@ -1,0 +1,12 @@
+{% load static %}
+
+<h1>ONE_APP HOME PAGE</h1>
+
+{% include 'button.html' %}
+
+{% for i in list %}
+
+<img src="{% static 'images/' %}{{i}}" alt="">
+
+
+{% endfor %}

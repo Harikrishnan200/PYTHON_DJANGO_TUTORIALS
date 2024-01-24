@@ -1,0 +1,23 @@
+<h1>list</h1>
+{% include 'button.html' %}
+
+
+<table>
+    <tr><th>Title</th><th>Description</th><th>Year</th><th>edit/delete</th><th>Poster</th></tr>
+{% for i in mov %}
+<tr>
+    <td><h3>{{i.title}}</h3></td>
+    
+    <td><h3>{{i.description}}</h3></td>
+    <td><h3>{{i.year}}</h3></td>
+    <td><img src="{{i.poster.url}}"></td>
+
+    <td><h3><a href="{% url 'edit' i.id %}">edit</a>/<a href="{% url 'delete' i.id %}">delete</a></h3></td>
+    
+
+
+
+</tr>
+
+{% endfor %}
+</table>
