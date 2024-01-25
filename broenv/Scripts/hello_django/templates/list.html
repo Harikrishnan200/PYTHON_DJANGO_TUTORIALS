@@ -10,12 +10,12 @@
     
     <td><h3>{{i.description}}</h3></td>
     <td><h3>{{i.year}}</h3></td>
-    <td>
+  <!--  <td>
     {% if i.poster %}
      <img src="{{i.poster.url}}"></img>
 
     {% endif %}  
-    </td>
+    </td>  -->
     <td><h3><a href="{% url 'edit' i.id %}">edit</a>/<a href="{% url 'delete' i.id %}">delete</a></h3></td>
     
     

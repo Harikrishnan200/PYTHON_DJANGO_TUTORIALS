@@ -88,14 +88,17 @@ def create(request):
         MovieInfo_obj.save()   """
         frm = MovieForm(request.POST,request.FILES)
 
-        frm = MovieForm(request.POST)
+        
         if frm.is_valid():
             frm.save()
             movie_set = MovieInfo.objects.all()
+            
 
             return render(request,'list.html',{'mov':movie_set})
 
+         
         else:
+            print(frm.errors)
             frm = MovieForm()
 
     
