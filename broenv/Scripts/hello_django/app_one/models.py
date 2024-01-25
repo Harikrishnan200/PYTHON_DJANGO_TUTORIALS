@@ -4,7 +4,7 @@ from django.db import models
 
 class CensorInfo(models.Model):
     rating = models.CharField(max_length = 20)
-    certified_by = models.CharField(max_length = 200,null = True)
+    certified_by = models.CharField(max_length = 200,null = True)  
 
 
 class MovieInfo(models.Model):
