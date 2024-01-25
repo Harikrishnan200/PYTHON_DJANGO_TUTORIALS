@@ -91,6 +91,9 @@ def create(request):
         frm = MovieForm(request.POST)
         if frm.is_valid():
             frm.save()
+            movie_set = MovieInfo.objects.all()
+
+            return render(request,'list.html',{'mov':movie_set})
 
         else:
             frm = MovieForm()

@@ -5,7 +5,9 @@ from django.db import models
 class CensorInfo(models.Model):
     rating = models.CharField(max_length = 20)
     certified_by = models.CharField(max_length = 200,null = True)  
-
+    
+    def __str__(self):
+        return self.certified_by
 
 class Director(models.Model):
     name = models.CharField(max_length = 20)
