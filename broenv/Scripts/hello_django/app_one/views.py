@@ -6,7 +6,7 @@ from .forms import MovieForm
 
 
 def list(request):
-    movie_set = MovieInfo.objects.all()
+    movie_set = MovieInfo.objects.filter(year = 5645).order_by('year')
 
     return render(request,'list.html',{'mov':movie_set})
 
