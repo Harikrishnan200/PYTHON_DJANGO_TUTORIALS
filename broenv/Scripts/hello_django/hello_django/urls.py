@@ -26,4 +26,5 @@ urlpatterns = [
     path('hai/',views.hai),
     path('movieList/',views.movie_list),
     path('',include('app_one.urls')),
+    path('',include('users.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

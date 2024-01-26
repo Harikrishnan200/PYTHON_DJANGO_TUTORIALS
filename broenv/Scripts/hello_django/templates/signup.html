@@ -1,0 +1,15 @@
+{% include 'button.html' %}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+   
+    
+    <p><label for="">Username:</label><input type="text",name="username"></p>   
+    <p><label for="">Password:</label><input type="password",name="password"></p>   
+    <button>signup</button> 
+    
+    {% if user_obj %}
+    <p>user created successfully</p>
+    {% endif %}
+
+</form>
