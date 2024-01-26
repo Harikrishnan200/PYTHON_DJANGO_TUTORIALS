@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from .models import MovieInfo
 from .forms import MovieForm
 
@@ -6,9 +7,14 @@ from .forms import MovieForm
 
 
 def list(request):
+    print(request.COOKIES)
+    visits = int(request.COOKIES.get('visits',0))
+    visits = visits+1
     movie_set = MovieInfo.objects.filter(year = 5645).order_by('year')
-
-    return render(request,'list.html',{'mov':movie_set})
+    
+    response = render(request,'list.html',{'mov':movie_set,'visits':visits})
+    response.set_cookie('visits',visits)
+    return response
 
 def edit(request,pk):
     instance_to_be_edited = MovieInfo.objects.get(pk=pk)
