@@ -1,7 +1,9 @@
 <h1>list no. of times visited:{{visits}}</h1>
 {% include 'button.html' %}
 
-
+{% for i in recent_movies %}
+<p>{{i.title}}</p>
+{% endfor %}
 <table>
     <tr><th>Title</th><th>Description</th><th>Year</th><th>edit/delete</th><th>Poster</th></tr>
 {% for i in mov %}

@@ -7,18 +7,23 @@ from .forms import MovieForm
 
 
 def list(request):
+
    # print(request.COOKIES)
    # visits = int(request.COOKIES.get('visits',0)) #request.COOKIES.get('visits',0) this fn returns value in the form of string
    # visits = visits+1
     
-    count = request.session.get('count',0) # this fn returns value in the form of string
-    count = int(count)
-    count = count + 1
-    request.session['count'] = count
-    movie_set = MovieInfo.objects.all()
+   # count = request.session.get('count',0) # this fn returns value in the form of string
+   # count = int(count)
+   # count = count + 1
+   # request.session['count'] = count
     
+    
+    movie_set = MovieInfo.objects.all()
+    recent_visits = request.session.get('recent_visits',[])
+    recent_movie_set = MovieInfo.objects.filter(pk__in = recent_visits)
+    response = render(request,'list.html',{'mov':movie_set,'recent_movies':recent_movie_set}) #used in session
    # response = render(request,'list.html',{'mov':movie_set,'visits':visits}) # used in the case of cookies
-    response = render(request,'list.html',{'mov':movie_set,'visits':count})  # used in the case of session
+   # response = render(request,'list.html',{'mov':movie_set,'visits':count})  # used in the case of session
    # response.set_cookie('visits',visits)
     return response
 
@@ -37,14 +42,21 @@ def edit(request,pk):
         if frm.is_valid():
             instance_to_be_edited.save()
         
-    else:
-
-
-
-
+    else: 
+        
         frm = MovieForm(instance=instance_to_be_edited)
 
-    return render(request,'create.html',{'frm':frm})
+        recent_visits = request.session.get('recent_visits',[])
+        recent_visits.insert(0,pk)
+        request.session['recent_visits'] = recent_visits
+        
+        
+        response = render(request,'create.html',{'frm':frm})
+
+
+        
+
+    return response
 
 def home(request):
     sample ={
