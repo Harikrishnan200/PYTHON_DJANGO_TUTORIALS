@@ -4,12 +4,17 @@
     {% csrf_token %}
    
     
-    <p><label for="">Username:</label><input type="text",name="username"></p>   
-    <p><label for="">Password:</label><input type="password",name="password"></p>   
-    <button>signup</button> 
     
-    {% if user_obj %}
+    <label for="">username:</label> <input type="text" name="username"> 
+    <label for="">password:</label> <input type="text" name="password">  
+    <button type="submit">signup</button> 
+    
+    {% if user %}
     <p>user created successfully</p>
+    {% endif %}
+
+    {% if error_msg %}
+    <p>{{error_message}}</p>
     {% endif %}
 
 </form>
