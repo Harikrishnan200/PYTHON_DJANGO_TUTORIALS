@@ -2,10 +2,11 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import MovieInfo
 from .forms import MovieForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-
+@login_required(login_url='login')  # name of the login url
 def list(request):
 
    # print(request.COOKIES)
@@ -26,7 +27,7 @@ def list(request):
    # response = render(request,'list.html',{'mov':movie_set,'visits':count})  # used in the case of session
    # response.set_cookie('visits',visits)
     return response
-
+@login_required(login_url='login')  # name of the login url
 def edit(request,pk):
     instance_to_be_edited = MovieInfo.objects.get(pk=pk)
     if request.POST:
@@ -57,7 +58,7 @@ def edit(request,pk):
         
 
     return response
-
+@login_required(login_url='login')  # name of the login url
 def home(request):
     sample ={
         'list': [
@@ -72,6 +73,8 @@ def home(request):
     }
     return render(request,'home.html',sample)
 
+
+@login_required(login_url='login')  # name of the login url
 def movies(request):
     mov_dict = {
         'items':[
@@ -100,7 +103,7 @@ def movies(request):
     }
     return render(request,'edit.html',mov_dict)
     
-
+@login_required(login_url='login')  # name of the login url
 def create(request):
     
     frm = MovieForm()
@@ -127,8 +130,10 @@ def create(request):
             frm = MovieForm()
 
     
-    return render(request,'create.html',{'frm':frm})  
+    return render(request,'create.html',{'frm':frm}) 
 
+
+@login_required(login_url='login')  # name of the login url
 def delete(request,pk):
     instance = MovieInfo.objects.get(pk=pk)
     instance.delete()

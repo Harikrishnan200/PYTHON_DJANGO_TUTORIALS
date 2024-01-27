@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login as userLogin,logout as userLogout  # in django login and logout are builtin functions
 from django.contrib.auth import authenticate
 
+
 # Create your views here.
 def signUp(request):
     user = None
@@ -46,4 +47,5 @@ def login(request):
 
 
 def logout(request):
-    return render(request,'login.html')
+    userLogout(request) #logout() is used to logout the user and request is the only parameter of this function
+    return redirect('login') # url of the login page
